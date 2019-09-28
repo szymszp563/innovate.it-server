@@ -34,19 +34,18 @@ public class ImageRestController {
         this.imageMapper = imageMapper;
     }
 
-    @GetMapping("/images")
+    @GetMapping("/images/{id}")
     public ResponseEntity getImagesIds(
-             @RequestBody InvestitionForImages investitionForImages
+            @PathVariable("id") Integer id
     ) throws InvestitionNotFoundException, ImagesNotFoundException {
-        List<Integer> imageIds = new ArrayList<>();
-        Investition investition = investitionService.findById(investitionForImages.getId());
+        Investition investition = investitionService.findById(id);
         if(investition == null)
             throw new InvestitionNotFoundException("Wrong investition id! Investition not found!");
         investition = investitionService.getWithImages(investition);
         if(investition.getImages() == null || investition.getImages().size() <= 0)
             throw new ImagesNotFoundException("There are no images!");
 
-        imageIds = investition.getImages().stream().map(Image::getId).collect(Collectors.toList());
+        List<Integer> imageIds = investition.getImages().stream().map(Image::getId).collect(Collectors.toList());
 
         ImageIdsResponse imageIdsResponse = new ImageIdsResponse();
         imageIdsResponse.setMessage("Images ids");
