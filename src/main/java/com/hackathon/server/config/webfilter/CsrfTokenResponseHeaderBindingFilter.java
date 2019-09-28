@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Binds a {@link org.springframework.security.web.csrf.CsrfToken} to the {@link HttpServletResponse}
  * headers if the Spring {@link org.springframework.security.web.csrf.CsrfFilter} has placed one in the {@link HttpServletRequest}.
- *
+ * <p>
  * Based on the work found in: <a href="http://stackoverflow.com/questions/20862299/with-spring-security-3-2-0-release-how-can-i-get-the-csrf-token-in-a-page-that">Stack Overflow</a>
  *
  * @author Allan Ditzel
@@ -30,7 +30,7 @@ public class CsrfTokenResponseHeaderBindingFilter extends OncePerRequestFilter {
         if (token != null) {
             response.setHeader(RESPONSE_HEADER_NAME, token.getHeaderName());
             response.setHeader(RESPONSE_PARAM_NAME, token.getParameterName());
-            response.setHeader(RESPONSE_TOKEN_NAME , token.getToken());
+            response.setHeader(RESPONSE_TOKEN_NAME, token.getToken());
         }
 
         filterChain.doFilter(request, response);

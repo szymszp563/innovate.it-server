@@ -10,12 +10,12 @@ import org.mapstruct.Mappings;
 public interface InvestitionMapper {
 
     @Mappings({
-            @Mapping(target="creator.username", source = "creator")
+            @Mapping(target = "creator.username", source = "creator")
     })
     Investition investitionDtoToInvestition(InvestitionDto dto);
 
     @Mappings({
-            @Mapping(target="creator", source = "entity.creator.username")
+            @Mapping(target = "creator", source = "entity.creator.username")
     })
     InvestitionDto investiotionToInvestitionDto(Investition entity);
 }

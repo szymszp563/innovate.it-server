@@ -33,7 +33,7 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
         int cout = usersRepository.findAll().size();
-        if(cout==0){
+        if (cout == 0) {
             loadDara();
         }
     }

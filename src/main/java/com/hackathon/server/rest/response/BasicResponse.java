@@ -1,6 +1,10 @@
 package com.hackathon.server.rest.response;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Setter
 @Getter
@@ -10,6 +14,6 @@ import lombok.*;
 public class BasicResponse {
 
     private int status;
-    private  String message;
+    private String message;
     private long timeStamp;
 }

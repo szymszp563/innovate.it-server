@@ -33,7 +33,7 @@ public class Users {
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
     private List<Investition> investition;
 
-    public void addInvestition (Investition investition){
+    public void addInvestition(Investition investition) {
         this.investition.add(investition);
         investition.setCreator(this);
     }

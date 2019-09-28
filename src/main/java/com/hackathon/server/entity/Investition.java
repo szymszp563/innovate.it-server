@@ -35,7 +35,7 @@ public class Investition {
     @OneToOne(mappedBy = "investition", cascade = CascadeType.ALL)
     private Place place;
 
-    public void addImage (Image image){
+    public void addImage(Image image) {
         this.images.add(image);
         image.setInvestition(this);
     }
