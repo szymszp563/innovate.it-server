@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @AllArgsConstructor
@@ -25,4 +27,8 @@ public class Place {
     private String longitude;
 
     private String latitude;
+
+    @ManyToOne
+    @JoinColumn(name = "investition_id")
+    private Investition investition;
 }

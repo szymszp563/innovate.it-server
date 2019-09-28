@@ -17,4 +17,6 @@ public class InvestitionDto {
     private List<ImageDto> images;
 
     private String creator;
+
+    private List<PlaceDto> places;
 }
