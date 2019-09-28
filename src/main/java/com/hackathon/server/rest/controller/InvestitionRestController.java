@@ -26,7 +26,12 @@ public class InvestitionRestController {
              @RequestBody InvestitionDto investitionDto
     ) {
         investitionService.saveDto(investitionDto);
-        return new ResponseEntity<>(new BasicResponse(), HttpStatus.OK);
+
+        BasicResponse investitionResponse = new BasicResponse();
+        investitionResponse.setMessage("Investition saved");
+        investitionResponse.setStatus(HttpStatus.OK.value());
+        investitionResponse.setTimeStamp(System.currentTimeMillis());
+        return new ResponseEntity<>(investitionResponse, HttpStatus.OK);
     }
 }
 
