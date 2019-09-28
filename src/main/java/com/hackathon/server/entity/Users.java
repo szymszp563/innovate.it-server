@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Setter
@@ -22,4 +23,7 @@ public class Users {
     private String password;
 
     private Boolean enabled;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "authoritiesPK.username")
+    private List<Authorities> authorities;
 }
