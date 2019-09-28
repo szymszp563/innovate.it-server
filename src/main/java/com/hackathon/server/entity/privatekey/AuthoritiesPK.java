@@ -1,4 +1,4 @@
-package com.hackathon.server.entity.privatekeys;
+package com.hackathon.server.entity.privatekey;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

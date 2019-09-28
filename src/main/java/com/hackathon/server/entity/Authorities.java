@@ -1,6 +1,6 @@
 package com.hackathon.server.entity;
 
-import com.hackathon.server.entity.privatekeys.AuthoritiesPK;
+import com.hackathon.server.entity.privatekey.AuthoritiesPK;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
