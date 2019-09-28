@@ -1,4 +1,4 @@
-package com.hackathon.server.rest.authentication.entrypoints;
+package com.hackathon.server.config.authentication.entrypoints;
 
 import java.io.IOException;
 

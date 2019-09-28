@@ -1,9 +1,9 @@
 package com.hackathon.server.config;
 
 import com.hackathon.server.config.webfilter.CsrfTokenResponseHeaderBindingFilter;
-import com.hackathon.server.rest.authentication.entrypoints.SimpleAuthenticationEntryPoint;
-import com.hackathon.server.rest.authentication.entrypoints.SimpleAuthenticationFailureHandler;
-import com.hackathon.server.rest.authentication.entrypoints.SimpleAuthenticationSuccessHandler;
+import com.hackathon.server.config.authentication.entrypoints.SimpleAuthenticationEntryPoint;
+import com.hackathon.server.config.authentication.entrypoints.SimpleAuthenticationFailureHandler;
+import com.hackathon.server.config.authentication.entrypoints.SimpleAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
