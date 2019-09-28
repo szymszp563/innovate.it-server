@@ -85,19 +85,19 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
         Place place3 = Place.builder().longitude("19.0593588").latitude("50.2540449").name("Katowice").build();
         Place place4 = Place.builder().longitude("19.0593588").latitude("50.2540449").name("Katowice").build();
 
-        Investition investition1 = Investition.builder().grades(new LinkedList<>())
+        Investition investition1 = Investition.builder().grades(new LinkedList<>()).title("Hotel")
                 .creator(user1).description("The biggest hotel in eastern europe")
                 .images(new LinkedList<>()).build();
 
-        Investition investition2 = Investition.builder().grades(new LinkedList<>())
+        Investition investition2 = Investition.builder().grades(new LinkedList<>()).title("Aquapark")
                 .creator(user2).description("Super place to go with children")
                 .images(new LinkedList<>()).build();
 
-        Investition investition3 = Investition.builder().grades(new LinkedList<>())
+        Investition investition3 = Investition.builder().grades(new LinkedList<>()).title("Market")
                 .creator(user3).description("The best place ever")
                 .images(new LinkedList<>()).build();
 
-        Investition investition4 = Investition.builder().grades(new LinkedList<>())
+        Investition investition4 = Investition.builder().grades(new LinkedList<>()).title("Zoo")
                 .creator(user4).description("Monkeys gonna still your bananas")
                 .images(new LinkedList<>()).build();
 

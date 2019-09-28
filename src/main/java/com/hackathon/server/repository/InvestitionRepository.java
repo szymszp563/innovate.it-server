@@ -15,6 +15,6 @@ public interface InvestitionRepository extends JpaRepository<Investition, Intege
 
     List<Investition> findByCreator(Users creator);
 
-    @Query("FROM Grade g, Investition i, Users u WHERE g.user.username=u.username AND g.investition.id=i.id and u.username=?1")
-    List<Object[]> findInvestitionWithGradeOfUser(String user);
+    @Query("SELECT i FROM Grade g, Investition i, Users u WHERE g.user.username=u.username AND g.investition.id=i.id and u.username=?1")
+    List<Investition> findInvestitionWithGradeOfUser(String user);
 }
