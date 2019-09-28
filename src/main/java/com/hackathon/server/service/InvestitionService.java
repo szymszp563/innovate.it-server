@@ -19,11 +19,13 @@ public class InvestitionService {
 
     private final UsersRepository usersRepository;
 
-    public void save (Investition investition) {
+    public void save(Investition investition) {
         investitionRepository.save(investition);
     }
 
-    public List<Investition> findAll() {return investitionRepository.findAll();}
+    public List<Investition> findAll() {
+        return investitionRepository.findAll();
+    }
 
     public void saveDto(InvestitionDto investitionDto) {
         Investition investition = investitionMapper.investitionDtoToInvestition(investitionDto);
@@ -42,7 +44,7 @@ public class InvestitionService {
     }
 
     public Investition findById(Integer id) {
-        return  investitionRepository.findById(id).get();
+        return investitionRepository.findById(id).get();
     }
 }
 

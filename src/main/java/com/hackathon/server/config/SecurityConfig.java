@@ -1,11 +1,10 @@
 package com.hackathon.server.config;
 
-import com.hackathon.server.config.webfilter.CsrfTokenResponseHeaderBindingFilter;
 import com.hackathon.server.config.authentication.entrypoints.SimpleAuthenticationEntryPoint;
 import com.hackathon.server.config.authentication.entrypoints.SimpleAuthenticationFailureHandler;
 import com.hackathon.server.config.authentication.entrypoints.SimpleAuthenticationSuccessHandler;
+import com.hackathon.server.config.webfilter.CsrfTokenResponseHeaderBindingFilter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -20,7 +19,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 
 
 @Configuration

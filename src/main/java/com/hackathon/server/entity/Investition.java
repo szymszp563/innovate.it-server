@@ -43,12 +43,12 @@ public class Investition {
     @OneToMany(mappedBy = "investition", cascade = CascadeType.ALL)
     private List<Place> places;
 
-    public void addImage (Image image){
+    public void addImage(Image image) {
         this.images.add(image);
         image.setInvestition(this);
     }
 
-    public void addPlace (Place place){
+    public void addPlace(Place place) {
         this.places.add(place);
         place.setInvestition(this);
     }

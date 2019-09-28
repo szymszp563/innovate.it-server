@@ -12,9 +12,11 @@ import java.util.List;
 public class PlaceService {
     private final PlaceRepository placeRepository;
 
-    public void save (Place place) {
+    public void save(Place place) {
         placeRepository.save(place);
     }
 
-    public List<Place> findAll() {return placeRepository.findAll();}
+    public List<Place> findAll() {
+        return placeRepository.findAll();
+    }
 }
