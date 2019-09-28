@@ -9,7 +9,9 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring", uses = {UsersMapper.class})
 public interface InvestitionMapper {
 
-
+    @Mappings({
+            @Mapping(target="creator.username", source = "creator")
+    })
     Investition investitionDtoToInvestition(InvestitionDto dto);
 
     @Mappings({
