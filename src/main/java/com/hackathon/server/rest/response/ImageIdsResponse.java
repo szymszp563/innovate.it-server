@@ -8,7 +8,6 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class ImageIdsResponse extends BasicResponse {
     List<Integer> imageIds;
 }

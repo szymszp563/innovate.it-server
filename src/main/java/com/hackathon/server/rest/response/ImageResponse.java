@@ -7,7 +7,6 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class ImageResponse extends BasicResponse {
     ImageDto imageDto;
 }
