@@ -12,7 +12,7 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Logger;
 
 @Configuration
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application.yml")
 public class ServerConfig {
 
     @Autowired
