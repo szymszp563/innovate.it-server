@@ -6,7 +6,7 @@ spring:
     url: jdbc:mysql://localhost:3306/innovate_it_database?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: admin1
-    driver-class-name: com.mysql.jdbc.Driver
+    #driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop
