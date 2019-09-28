@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,14 +31,14 @@ public class Investition {
     @Lob
     private String description;
 
-    @OneToMany(mappedBy = "investition")
+    @OneToMany(mappedBy = "investition", cascade = CascadeType.ALL)
     private List<Image> images;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "creator_id")
     private Users creator;
 
-    @OneToMany(mappedBy = "investition")
+    @OneToMany(mappedBy = "investition", cascade = CascadeType.ALL)
     private List<Place> places;
 
 }
