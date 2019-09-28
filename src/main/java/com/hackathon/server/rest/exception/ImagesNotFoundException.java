@@ -1,4 +1,4 @@
-package com.hackathon.server.rest.exception.handler;
+package com.hackathon.server.rest.exception;
 
 public class ImagesNotFoundException extends Exception {
 
