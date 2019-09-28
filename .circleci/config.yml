@@ -43,3 +43,12 @@ jobs:
 
       # run tests!
       - run: mvn integration-test
+
+      - deploy:
+          name: Deploy over SSH
+          command: |
+            scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r target/server-0.0.1-SNAPSHOT.jar $SSH_USER@$SSH_HOST:/var/innovate.it/
+      - run:
+          name: Restart pm2 application process over SSH
+          command: |
+            ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $SSH_USER@$SSH_HOST "cd /var/innovate.it && java -jar server-0.0.1-SNAPSHOT.jar"
