@@ -186,10 +186,15 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
         user1.addGrade(grade12);
         user2.addGrade(grade13);
 
-        investition4.addGrade(grade18);
-        investition4.addGrade(grade19);
-        investition4.addGrade(grade20);
+        investition4.addGrade(grade14);
+        investition4.addGrade(grade15);
+        investition4.addGrade(grade16);
+        investition4.addGrade(grade17);
 
+        user4.addGrade(grade14);
+        user4.addGrade(grade15);
+        user1.addGrade(grade16);
+        user1.addGrade(grade17);
         user4.addGrade(grade18);
         user4.addGrade(grade19);
         user1.addGrade(grade20);
