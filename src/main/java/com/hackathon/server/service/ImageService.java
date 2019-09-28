@@ -1,6 +1,7 @@
 package com.hackathon.server.service;
 
 import com.hackathon.server.entity.Image;
+import com.hackathon.server.entity.Investition;
 import com.hackathon.server.repository.ImageRepository;
 import org.springframework.stereotype.Service;
 
