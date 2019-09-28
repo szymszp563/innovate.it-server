@@ -10,6 +10,9 @@ import java.util.List;
 @Getter
 @Setter
 public class InvestitionDto {
+
+    private Integer id;
+
     private String title;
 
     private String description;

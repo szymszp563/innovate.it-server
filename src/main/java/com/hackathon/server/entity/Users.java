@@ -30,6 +30,11 @@ public class Users {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "authoritiesPK.username")
     private List<Authorities> authorities;
 
-    @OneToMany(mappedBy = "creator")
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
     private List<Investition> investition;
+
+    public void addInvestition (Investition investition){
+        this.investition.add(investition);
+        investition.setCreator(this);
+    }
 }
