@@ -29,4 +29,5 @@ public class Investition {
     @ManyToOne
     @JoinColumn(name = "creator_id")
     private Users creator;
+
 }
