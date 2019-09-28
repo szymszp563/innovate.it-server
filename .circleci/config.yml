@@ -34,7 +34,7 @@ jobs:
 
       - run: mvn dependency:go-offline
 
-      - run: ls -l
+      - run: ls target
 
       - save_cache:
           paths:
