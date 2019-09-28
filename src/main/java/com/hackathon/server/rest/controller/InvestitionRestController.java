@@ -38,7 +38,7 @@ public class InvestitionRestController {
         return new ResponseEntity<>(investitionResponse, HttpStatus.OK);
     }
 
-    @GetMapping("/investitions")
+    @PostMapping("/investitions")
     public ResponseEntity getInvestitions(
             @RequestBody InvestitionRequest investitionRequest
     ) throws UserNotFoundException, InvestitionNotFoundException {
