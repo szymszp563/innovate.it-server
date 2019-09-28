@@ -12,7 +12,10 @@ import com.hackathon.server.service.InvestitionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +30,7 @@ public class InvestitionRestController {
 
     @PostMapping("/investition")
     public ResponseEntity saveInvestition(
-             @RequestBody InvestitionDto investitionDto
+            @RequestBody InvestitionDto investitionDto
     ) {
         investitionService.saveDto(investitionDto);
 
@@ -42,15 +45,14 @@ public class InvestitionRestController {
     public ResponseEntity getInvestitions(
             @RequestBody InvestitionRequest investitionRequest
     ) throws UserNotFoundException, InvestitionNotFoundException {
-        if(investitionRequest.getCity().isPresent()) {
+        if (investitionRequest.getCity() != null && investitionRequest.getCity().isPresent()) {
             List<Investition> investitions = investitionService.findByCity(investitionRequest.getCity().get());
             List<InvestitionDto> investitionDtos =
                     investitions.stream().map(investitionMapper::investiotionToInvestitionDto).collect(Collectors.toList());
 
             InvestitionsResponse investitionResponse = getInvestitionsResponse(investitionDtos);
             return new ResponseEntity<>(investitionResponse, HttpStatus.OK);
-        }
-        else {
+        } else {
             List<InvestitionDto> investitionDtos =
                     investitionService.findByCreator(investitionRequest.getCreator().get())
                             .stream().map(investitionMapper::investiotionToInvestitionDto).collect(Collectors.toList());
