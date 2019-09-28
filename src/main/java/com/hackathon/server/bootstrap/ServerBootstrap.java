@@ -85,21 +85,21 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
         Place place3 = Place.builder().longitude("50.2540449").latitude("19.0593588").name("Katowice").build();
         Place place4 = Place.builder().longitude("50.2540449").latitude("19.0593588").name("Katowice").build();
 
-        Investition investition1 = Investition.builder()
-                .creator(user1).description("The biggest hotel in eastern europe").grades(new LinkedList<>())
-                .images(new LinkedList<>()).places(new LinkedList<>()).title("Hotel").build();
+        Investition investition1 = Investition.builder().grades(new LinkedList<>())
+                .creator(user1).description("The biggest hotel in eastern europe")
+                .images(new LinkedList<>()).build();
 
         Investition investition2 = Investition.builder().grades(new LinkedList<>())
                 .creator(user2).description("Super place to go with children")
-                .images(new LinkedList<>()).places(new LinkedList<>()).title("Aquapark").build();
+                .images(new LinkedList<>()).build();
 
         Investition investition3 = Investition.builder().grades(new LinkedList<>())
                 .creator(user3).description("The best place ever")
-                .images(new LinkedList<>()).places(new LinkedList<>()).title("Super place").build();
+                .images(new LinkedList<>()).build();
 
         Investition investition4 = Investition.builder().grades(new LinkedList<>())
                 .creator(user4).description("Monkeys gonna still your bananas")
-                .images(new LinkedList<>()).places(new LinkedList<>()).title("Zoo").build();
+                .images(new LinkedList<>()).build();
 
         investitionRepository.saveAll(Arrays.asList(investition1, investition2, investition3, investition4));
 

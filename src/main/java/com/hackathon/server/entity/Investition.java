@@ -6,15 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -40,8 +32,8 @@ public class Investition {
     @JoinColumn(name = "creator_id")
     private Users creator;
 
-    @OneToMany(mappedBy = "investition", cascade = CascadeType.ALL)
-    private List<Place> places;
+    @OneToOne(mappedBy = "investition", cascade = CascadeType.ALL)
+    private Place place;
 
     @OneToMany(mappedBy = "investition", cascade = CascadeType.ALL)
     private List<Grade> grades;
@@ -52,7 +44,7 @@ public class Investition {
     }
 
     public void addPlace(Place place) {
-        this.places.add(place);
+        this.place = place;
         place.setInvestition(this);
     }
 
