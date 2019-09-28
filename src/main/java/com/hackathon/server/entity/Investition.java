@@ -43,6 +43,9 @@ public class Investition {
     @OneToMany(mappedBy = "investition", cascade = CascadeType.ALL)
     private List<Place> places;
 
+    @OneToMany(mappedBy = "investition", cascade = CascadeType.ALL)
+    private List<Grade> grades;
+
     public void addImage(Image image) {
         this.images.add(image);
         image.setInvestition(this);
@@ -51,6 +54,11 @@ public class Investition {
     public void addPlace(Place place) {
         this.places.add(place);
         place.setInvestition(this);
+    }
+
+    public void addGrade(Grade grade){
+        this.grades.add(grade);
+        grade.setInvestition(this);
     }
 
 }

@@ -1,12 +1,14 @@
 package com.hackathon.server.bootstrap;
 
 import com.hackathon.server.entity.Authorities;
+import com.hackathon.server.entity.Grade;
 import com.hackathon.server.entity.Image;
 import com.hackathon.server.entity.Investition;
 import com.hackathon.server.entity.Place;
 import com.hackathon.server.entity.Users;
 import com.hackathon.server.entity.privatekey.AuthoritiesPK;
 import com.hackathon.server.repository.AuthoritiesRepository;
+import com.hackathon.server.repository.GradeRepository;
 import com.hackathon.server.repository.ImageRepository;
 import com.hackathon.server.repository.InvestitionRepository;
 import com.hackathon.server.repository.PlaceRepository;
@@ -28,6 +30,7 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
     private final InvestitionRepository investitionRepository;
     private final UsersRepository usersRepository;
     private final PlaceRepository placeRepository;
+    private final GradeRepository gradeRepository;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -50,16 +53,16 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
 
         Users user1 = Users.builder()
                 .username(auth1.getAuthoritiesPK().getUsername()).enabled(true).password("{noop}user1")
-                .authorities(Arrays.asList(auth1)).investition(new LinkedList<>()).build();
+                .authorities(Arrays.asList(auth1)).investition(new LinkedList<>()).grades(new LinkedList<>()).build();
         Users user2 = Users.builder().
                 username(auth2.getAuthoritiesPK().getUsername()).enabled(true).password("{noop}user2").
-                authorities(Arrays.asList(auth2)).investition(new LinkedList<>()).build();
+                authorities(Arrays.asList(auth2)).investition(new LinkedList<>()).grades(new LinkedList<>()).build();
         Users user3 = Users.builder().
                 username(auth3.getAuthoritiesPK().getUsername()).enabled(true).password("{noop}user3").
-                authorities(Arrays.asList(auth3)).investition(new LinkedList<>()).build();
+                authorities(Arrays.asList(auth3)).investition(new LinkedList<>()).grades(new LinkedList<>()).build();
         Users user4 = Users.builder()
                 .username(auth4.getAuthoritiesPK().getUsername()).enabled(true).password("{noop}user4").
-                        authorities(Arrays.asList(auth4)).investition(new LinkedList<>()).build();
+                        authorities(Arrays.asList(auth4)).investition(new LinkedList<>()).grades(new LinkedList<>()).build();
 
         usersRepository.saveAll(Arrays.asList(user1, user2, user3, user4));
 
@@ -83,18 +86,18 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
         Place place4 = Place.builder().longitude("50.2540449").latitude("19.0593588").name("Katowice").build();
 
         Investition investition1 = Investition.builder()
-                .creator(user1).description("The biggest hotel in eastern europe")
+                .creator(user1).description("The biggest hotel in eastern europe").grades(new LinkedList<>())
                 .images(new LinkedList<>()).places(new LinkedList<>()).title("Hotel").build();
 
-        Investition investition2 = Investition.builder()
+        Investition investition2 = Investition.builder().grades(new LinkedList<>())
                 .creator(user2).description("Super place to go with children")
                 .images(new LinkedList<>()).places(new LinkedList<>()).title("Aquapark").build();
 
-        Investition investition3 = Investition.builder()
+        Investition investition3 = Investition.builder().grades(new LinkedList<>())
                 .creator(user3).description("The best place ever")
                 .images(new LinkedList<>()).places(new LinkedList<>()).title("Super place").build();
 
-        Investition investition4 = Investition.builder()
+        Investition investition4 = Investition.builder().grades(new LinkedList<>())
                 .creator(user4).description("Monkeys gonna still your bananas")
                 .images(new LinkedList<>()).places(new LinkedList<>()).title("Zoo").build();
 
@@ -119,5 +122,80 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
         user2.addInvestition(investition2);
         user3.addInvestition(investition3);
         user1.addInvestition(investition4);
+
+        usersRepository.saveAll(Arrays.asList(user1, user2, user3));
+
+        Grade grade1 = Grade.builder().doLike(true).build();
+        Grade grade2 = Grade.builder().doLike(true).build();
+        Grade grade3 = Grade.builder().doLike(true).build();
+        Grade grade4 = Grade.builder().doLike(true).build();
+        Grade grade5 = Grade.builder().doLike(true).build();
+        Grade grade6 = Grade.builder().doLike(true).build();
+        Grade grade7 = Grade.builder().doLike(true).build();
+        Grade grade8 = Grade.builder().doLike(true).build();
+        Grade grade9 = Grade.builder().doLike(true).build();
+        Grade grade10 = Grade.builder().doLike(true).build();
+        Grade grade11 = Grade.builder().doLike(true).build();
+        Grade grade12 = Grade.builder().doLike(true).build();
+        Grade grade13 = Grade.builder().doLike(true).build();
+        Grade grade14 = Grade.builder().doLike(true).build();
+        Grade grade15 = Grade.builder().doLike(true).build();
+        Grade grade16 = Grade.builder().doLike(true).build();
+        Grade grade17 = Grade.builder().doLike(true).build();
+        Grade grade18 = Grade.builder().doLike(true).build();
+        Grade grade19 = Grade.builder().doLike(true).build();
+        Grade grade20 = Grade.builder().doLike(true).build();
+
+        investition1.addGrade(grade1);
+        investition1.addGrade(grade2);
+        investition1.addGrade(grade3);
+        investition1.addGrade(grade4);
+        investition1.addGrade(grade5);
+        investition1.addGrade(grade6);
+        investition1.addGrade(grade7);
+
+        user1.addGrade(grade1);
+        user1.addGrade(grade2);
+        user1.addGrade(grade3);
+        user1.addGrade(grade4);
+        user1.addGrade(grade5);
+        user1.addGrade(grade6);
+        user1.addGrade(grade7);
+
+        investition2.addGrade(grade8);
+        investition2.addGrade(grade9);
+        investition2.addGrade(grade10);
+        investition2.addGrade(grade11);
+        investition2.addGrade(grade12);
+        investition2.addGrade(grade13);
+
+        user2.addGrade(grade8);
+        user4.addGrade(grade9);
+        user2.addGrade(grade10);
+        user4.addGrade(grade11);
+        user2.addGrade(grade12);
+        user2.addGrade(grade13);
+
+        investition3.addGrade(grade14);
+        investition3.addGrade(grade15);
+        investition3.addGrade(grade16);
+        investition3.addGrade(grade17);
+
+        user3.addGrade(grade10);
+        user3.addGrade(grade11);
+        user1.addGrade(grade12);
+        user2.addGrade(grade13);
+
+        investition4.addGrade(grade18);
+        investition4.addGrade(grade19);
+        investition4.addGrade(grade20);
+
+        user4.addGrade(grade18);
+        user4.addGrade(grade19);
+        user1.addGrade(grade20);
+
+        gradeRepository.saveAll(Arrays.asList(grade1, grade2, grade3, grade4, grade5, grade6, grade7, grade8,
+                grade9, grade10, grade11, grade12, grade13, grade14, grade15, grade16, grade17, grade18, grade19, grade20));
+
     }
 }

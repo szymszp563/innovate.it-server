@@ -1,6 +1,5 @@
 package com.hackathon.server.dto;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,9 +7,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ImageDto {
+public class GradeDto {
+    private Integer id;
 
-    private String name;
+    private boolean doLike;
 
-    private String data;
+    private UserDto user;
+
+    private InvestitionDto investition;
 }

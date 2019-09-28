@@ -33,8 +33,16 @@ public class Users {
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
     private List<Investition> investition;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Grade> grades;
+
     public void addInvestition(Investition investition) {
         this.investition.add(investition);
         investition.setCreator(this);
+    }
+
+    public void addGrade(Grade grade){
+        this.grades.add(grade);
+        grade.setUser(this);
     }
 }
