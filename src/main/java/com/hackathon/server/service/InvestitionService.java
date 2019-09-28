@@ -31,5 +31,18 @@ public class InvestitionService {
         investition.setCreator(user);
         investitionRepository.save(investition);
     }
+
+    public Investition finByTitle(String title) {
+        return investitionRepository.findByTitle(title);
+    }
+
+    public Investition getWithImages(Investition investition) {
+        investition.getImages();
+        return investition;
+    }
+
+    public Investition findById(Integer id) {
+        return  investitionRepository.findById(id).get();
+    }
 }
 
