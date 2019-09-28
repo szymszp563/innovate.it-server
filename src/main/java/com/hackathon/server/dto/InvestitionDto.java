@@ -21,5 +21,5 @@ public class InvestitionDto {
 
     private String creator;
 
-    private List<PlaceDto> places;
+    private PlaceDto place;
 }

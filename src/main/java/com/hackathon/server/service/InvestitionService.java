@@ -6,10 +6,13 @@ import com.hackathon.server.entity.Users;
 import com.hackathon.server.mappers.InvestitionMapper;
 import com.hackathon.server.repository.InvestitionRepository;
 import com.hackathon.server.repository.UsersRepository;
+import com.hackathon.server.rest.exception.InvestitionNotFoundException;
+import com.hackathon.server.rest.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -45,6 +48,20 @@ public class InvestitionService {
 
     public Investition findById(Integer id) {
         return investitionRepository.findById(id).get();
+    }
+
+    public List<Investition> findByCity(String city) {
+        return investitionRepository.findByCity(city);
+    }
+
+    public List<Investition> findByCreator(String creator) throws InvestitionNotFoundException, UserNotFoundException {
+        Users users = usersRepository.findByUsername(creator);
+        if(users == null)
+            throw new UserNotFoundException("User with given username: " + creator + " does not exist!");
+        List<Investition> investitions = investitionRepository.findByCreator(users);
+        if(investitions == null || investitions.size() <= 0)
+            throw new InvestitionNotFoundException("No investition found!");
+        return investitions;
     }
 }
 
