@@ -113,4 +113,9 @@
         </plugins>
     </build>
 
+    <scm>
+        <developerConnection>scm:git:https://github.com/szymszp563/innovate.it-server.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
 </project>
