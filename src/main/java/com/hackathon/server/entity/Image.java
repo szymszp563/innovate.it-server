@@ -6,27 +6,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Investition {
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String title;
+    private String name;
 
     @Lob
-    private String description;
-
-    @OneToMany(mappedBy = "investition")
-    private List<Image> images;
+    private String data;
 
     @ManyToOne
-    @JoinColumn(name = "creator_id")
-    private Users creator;
+    @JoinColumn(name = "investition_id")
+    private Investition investition;
 }
