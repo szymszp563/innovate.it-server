@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SimpleAuthenticationSuccessHandler authenticationSuccessHandler;
     @Autowired
-    @Qualifier("secutiyDataSource")
+    //@Qualifier("secutiyDataSource")
     private DataSource securityDataSource;
 
     @Override
