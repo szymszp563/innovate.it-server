@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -67,9 +68,10 @@ public class InvestitionService {
         Users user = usersRepository.findByUsername(username);
         if(user == null)
             throw new UserNotFoundException("User with given username: " + username + " does not exist!");
-        List<Investition> investitions = investitionRepository.findInvestitionWithGradeOfUser(username);
-        if(investitions == null || investitions.size() <= 0)
+        List<Object[]> objects = investitionRepository.findInvestitionWithGradeOfUser(username);
+        if(objects == null || objects.size() <= 0)
             throw new InvestitionNotFoundException("No investition found!");
+        List<Investition> investitions = objects.stream().map(o -> (Investition)o[1]).collect(Collectors.toList());
         return investitions;
     }
 }
