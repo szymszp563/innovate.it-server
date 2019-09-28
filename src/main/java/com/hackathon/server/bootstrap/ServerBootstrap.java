@@ -84,19 +84,19 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
 
         Investition investition1 = Investition.builder()
                 .creator(user1).description("The biggest hotel in eastern europe")
-                .images(new LinkedList<>()).places(new LinkedList<>()).title("Hotel").build();
+                .images(new LinkedList<>()).build();
 
         Investition investition2 = Investition.builder()
                 .creator(user2).description("Super place to go with children")
-                .images(new LinkedList<>()).places(new LinkedList<>()).title("Aquapark").build();
+                .images(new LinkedList<>()).build();
 
         Investition investition3 = Investition.builder()
                 .creator(user3).description("The best place ever")
-                .images(new LinkedList<>()).places(new LinkedList<>()).title("Super place").build();
+                .images(new LinkedList<>()).build();
 
         Investition investition4 = Investition.builder()
                 .creator(user4).description("Monkeys gonna still your bananas")
-                .images(new LinkedList<>()).places(new LinkedList<>()).title("Zoo").build();
+                .images(new LinkedList<>()).build();
 
         investitionRepository.saveAll(Arrays.asList(investition1, investition2, investition3, investition4));
 

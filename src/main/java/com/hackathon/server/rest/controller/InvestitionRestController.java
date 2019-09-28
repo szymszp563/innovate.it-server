@@ -2,6 +2,7 @@ package com.hackathon.server.rest.controller;
 
 import com.hackathon.server.dto.InvestitionDto;
 import com.hackathon.server.entity.Investition;
+import com.hackathon.server.rest.request.CityForInvestitionRequest;
 import com.hackathon.server.rest.response.BasicResponse;
 import com.hackathon.server.service.InvestitionService;
 import org.springframework.http.HttpStatus;
@@ -33,9 +34,9 @@ public class InvestitionRestController {
 
     @GetMapping("/investition")
     public ResponseEntity getInvestitionWithCity(
-            @RequestBody InvestitionDto investitionDto
+            @RequestBody CityForInvestitionRequest cityForInvestitionRequest
     ) {
-        investitionService.saveDto(investitionDto);
+
 
         BasicResponse investitionResponse = new BasicResponse();
         investitionResponse.setMessage("Investition saved");
