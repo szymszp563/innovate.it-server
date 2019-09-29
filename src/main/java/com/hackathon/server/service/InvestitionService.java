@@ -72,5 +72,15 @@ public class InvestitionService {
             throw new InvestitionNotFoundException("No investition found!");
         return investitions;
     }
+
+    public List<Investition> findAllInvestitionsNotLikedByUser(String username) throws UserNotFoundException, InvestitionNotFoundException {
+        Users user = usersRepository.findByUsername(username);
+        if(user == null)
+            throw new UserNotFoundException("User with given username: " + username + " does not exist!");
+        List<Investition> investitions = investitionRepository.findAllInvestitionsNotLikedByUser(username);
+        if(investitions == null || investitions.size() <= 0)
+            throw new InvestitionNotFoundException("No investition found!");
+        return investitions;
+    }
 }
 
