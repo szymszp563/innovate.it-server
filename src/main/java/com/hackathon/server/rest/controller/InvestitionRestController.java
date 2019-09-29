@@ -96,6 +96,18 @@ public class InvestitionRestController {
         return new ResponseEntity<>(investitionResponse, HttpStatus.OK);
     }
 
+    @GetMapping("/investitions/liked/{username}")
+    public ResponseEntity getInvestitionsLikedByUser(
+            @PathVariable("username") String username
+    ) throws UserNotFoundException, InvestitionNotFoundException {
+        List<InvestitionDto> investitionDtos =
+                investitionService.findInvestitionsLikedByUser(username)
+                        .stream().map(investitionMapper::investiotionToInvestitionDto).collect(Collectors.toList());
+
+        InvestitionsResponse investitionResponse = getInvestitionsResponse(investitionDtos);
+        return new ResponseEntity<>(investitionResponse, HttpStatus.OK);
+    }
+
 
     @GetMapping("investitions/allCategories")
     public ResponseEntity getAllCategories(){
@@ -131,6 +143,8 @@ public class InvestitionRestController {
 
         return new ResponseEntity<>(dislikeResponse, HttpStatus.OK);
     }
+
+
 
     private InvestitionsResponse getInvestitionsResponse(List<InvestitionDto> investitionDtos) {
         InvestitionsResponse investitionResponse = new InvestitionsResponse();

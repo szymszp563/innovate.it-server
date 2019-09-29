@@ -20,5 +20,9 @@ public interface InvestitionRepository extends JpaRepository<Investition, Intege
 
     @Query("SELECT i FROM Investition i WHERE NOT EXISTS (SELECT g FROM i.grades g WHERE g.user.username=?1)")
     List<Investition> findAllInvestitionsNotLikedByUser(String username);
+
+    @Query("SELECT i FROM Grade g, Investition i, Users u WHERE g.user.username=u.username AND g.investition.id=i.id and u.username=?1 AND g.doLike=true ")
+    List<Investition> findInvestitionLikedByUser(String user);
+
 }
 //WHERE NOT EXISTS (SELECT o FROM i.grades WHERE o.user.username=?1)
