@@ -13,6 +13,10 @@ spring:
     show-sql: true
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  data:
+    rest:
+      base-path: /api/basic
+      default-page-size: 10000000
 
 connection:
   pool:
