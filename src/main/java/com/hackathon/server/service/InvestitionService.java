@@ -1,8 +1,10 @@
 package com.hackathon.server.service;
 
 import com.hackathon.server.dto.InvestitionDto;
+import com.hackathon.server.entity.Image;
 import com.hackathon.server.entity.Investition;
 import com.hackathon.server.entity.Users;
+import com.hackathon.server.mappers.ImageMapper;
 import com.hackathon.server.mappers.InvestitionMapper;
 import com.hackathon.server.repository.InvestitionRepository;
 import com.hackathon.server.repository.UsersRepository;
@@ -12,12 +14,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class InvestitionService {
     private final InvestitionRepository investitionRepository;
     private final InvestitionMapper investitionMapper;
+    private final ImageMapper imageMapper;
 
     private final UsersRepository usersRepository;
 
@@ -33,6 +37,10 @@ public class InvestitionService {
         Investition investition = investitionMapper.investitionDtoToInvestition(investitionDto);
         Users user = usersRepository.findByUsername(investitionDto.getCreator());
         investition.setCreator(user);
+        for (Image image: investition.getImages()
+             ) {
+            image.setInvestition(investition);
+        }
         investitionRepository.save(investition);
     }
 
