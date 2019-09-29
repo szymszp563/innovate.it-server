@@ -4,6 +4,7 @@ import com.hackathon.server.entity.Authorities;
 import com.hackathon.server.entity.Grade;
 import com.hackathon.server.entity.Image;
 import com.hackathon.server.entity.Investition;
+import com.hackathon.server.entity.InvestitionCategory;
 import com.hackathon.server.entity.Place;
 import com.hackathon.server.entity.Users;
 import com.hackathon.server.entity.privatekey.AuthoritiesPK;
@@ -85,19 +86,19 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
         Place place3 = Place.builder().longitude("19.0593588").latitude("50.2540449").name("Katowice").build();
         Place place4 = Place.builder().longitude("19.0593588").latitude("50.2540449").name("Katowice").build();
 
-        Investition investition1 = Investition.builder().grades(new LinkedList<>()).title("Hotel")
+        Investition investition1 = Investition.builder().grades(new LinkedList<>()).title("Hotel").category(InvestitionCategory.HOUSING)
                 .creator(user1).description("The biggest hotel in eastern europe")
                 .images(new LinkedList<>()).build();
 
-        Investition investition2 = Investition.builder().grades(new LinkedList<>()).title("Aquapark")
+        Investition investition2 = Investition.builder().grades(new LinkedList<>()).title("Aquapark").category(InvestitionCategory.BROTHELS)
                 .creator(user2).description("Super place to go with children")
                 .images(new LinkedList<>()).build();
 
-        Investition investition3 = Investition.builder().grades(new LinkedList<>()).title("Market")
+        Investition investition3 = Investition.builder().grades(new LinkedList<>()).title("Market").category(InvestitionCategory.GASTRONOMY)
                 .creator(user3).description("The best place ever")
                 .images(new LinkedList<>()).build();
 
-        Investition investition4 = Investition.builder().grades(new LinkedList<>()).title("Zoo")
+        Investition investition4 = Investition.builder().grades(new LinkedList<>()).title("Zoo").category(InvestitionCategory.ENTERTAINMENT)
                 .creator(user4).description("Monkeys gonna still your bananas")
                 .images(new LinkedList<>()).build();
 

@@ -1,5 +1,6 @@
 package com.hackathon.server.dto;
 
+import com.hackathon.server.entity.InvestitionCategory;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,10 @@ public class InvestitionDto {
     private String title;
 
     private String description;
+
+    private String shortDescription;
+
+    private InvestitionCategory category;
 
     private List<ImageDto> images;
 
