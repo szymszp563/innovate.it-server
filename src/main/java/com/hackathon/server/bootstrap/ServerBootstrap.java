@@ -109,19 +109,19 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
         Place place3 = Place.builder().longitude("19.0593588").latitude("50.2540449").name("Katowice").build();
         Place place4 = Place.builder().longitude("19.0593588").latitude("50.2540449").name("Katowice").build();
 
-        Investition investition1 = Investition.builder().grades(new LinkedList<>()).title("Hotel").category(InvestitionCategory.HOUSING)
+        Investition investition1 = Investition.builder().grades(new LinkedList<>()).title("Hotel").category(InvestitionCategory.MIESZKANIOWA)
                 .creator(user1).description("The biggest hotel in eastern europe").shortDescription("Nice Hotel").likes(0).dislikes(0)
                 .images(new LinkedList<>()).build();
 
-        Investition investition2 = Investition.builder().grades(new LinkedList<>()).title("Aquapark").category(InvestitionCategory.BROTHELS)
+        Investition investition2 = Investition.builder().grades(new LinkedList<>()).title("Aquapark").category(InvestitionCategory.USLUGI)
                 .creator(user2).description("Super place to go with children").shortDescription("Pleasant place").likes(0).dislikes(0)
                 .images(new LinkedList<>()).build();
 
-        Investition investition3 = Investition.builder().grades(new LinkedList<>()).title("Market").category(InvestitionCategory.GASTRONOMY)
+        Investition investition3 = Investition.builder().grades(new LinkedList<>()).title("Market").category(InvestitionCategory.GASTRONOPIA)
                 .creator(user3).description("The best place ever").shortDescription("Low prices").likes(0).dislikes(0)
                 .images(new LinkedList<>()).build();
 
-        Investition investition4 = Investition.builder().grades(new LinkedList<>()).title("Zoo").category(InvestitionCategory.ENTERTAINMENT)
+        Investition investition4 = Investition.builder().grades(new LinkedList<>()).title("Zoo").category(InvestitionCategory.ROZRYWKOWA)
                 .creator(user4).description("Monkeys gonna still your bananas").shortDescription("Animals everywhere").likes(0).dislikes(0)
                 .images(new LinkedList<>()).build();
 
