@@ -94,14 +94,7 @@ public class InvestitionRestController {
             @PathVariable("username") String username,
             @PathVariable("investitionId") Integer investitionId
     ){
-        Investition investition = investitionService.findById(investitionId);
-        Users user = usersService.findByUsername(username);
-
-        Grade grade = Grade.builder().doLike(Boolean.TRUE).build();
-        user.addGrade(grade);
-        investition.addGrade(grade);
-
-        gradeService.save(grade);
+        gradeInvestition(username, investitionId, Boolean.TRUE);
 
         BasicResponse likeResponse = new InvestitionsResponse();
         likeResponse.setMessage("Like saved!");
@@ -111,6 +104,21 @@ public class InvestitionRestController {
         return new ResponseEntity<>(likeResponse, HttpStatus.OK);
     }
 
+    @GetMapping("investition/dislike/{investitionId}/{username}")
+    public ResponseEntity dislikeInvestition(
+            @PathVariable("username") String username,
+            @PathVariable("investitionId") Integer investitionId
+    ){
+        gradeInvestition(username, investitionId, Boolean.FALSE);
+
+        BasicResponse dislikeResponse = new InvestitionsResponse();
+        dislikeResponse.setMessage("Dislike saved!");
+        dislikeResponse.setStatus(HttpStatus.OK.value());
+        dislikeResponse.setTimeStamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(dislikeResponse, HttpStatus.OK);
+    }
+
     private InvestitionsResponse getInvestitionsResponse(List<InvestitionDto> investitionDtos) {
         InvestitionsResponse investitionResponse = new InvestitionsResponse();
         investitionResponse.setMessage("Fetched investitions");
@@ -118,6 +126,18 @@ public class InvestitionRestController {
         investitionResponse.setTimeStamp(System.currentTimeMillis());
         investitionResponse.setInvestitionDtos(investitionDtos);
         return investitionResponse;
+    }
+
+    private void gradeInvestition(String username, Integer investitionId, Boolean mark) {
+
+        Investition investition = investitionService.findById(investitionId);
+        Users user = usersService.findByUsername(username);
+
+        Grade grade = Grade.builder().doLike(mark).build();
+        user.addGrade(grade);
+        investition.addGrade(grade);
+
+        gradeService.save(grade);
     }
 }
 
