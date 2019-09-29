@@ -1,15 +1,19 @@
 package com.hackathon.server.rest.controller;
 
 import com.hackathon.server.dto.InvestitionDto;
+import com.hackathon.server.entity.Grade;
 import com.hackathon.server.entity.Investition;
 import com.hackathon.server.entity.InvestitionCategory;
+import com.hackathon.server.entity.Users;
 import com.hackathon.server.mappers.InvestitionMapper;
 import com.hackathon.server.rest.exception.InvestitionNotFoundException;
 import com.hackathon.server.rest.exception.UserNotFoundException;
 import com.hackathon.server.rest.request.InvestitionRequest;
 import com.hackathon.server.rest.response.BasicResponse;
 import com.hackathon.server.rest.response.InvestitionsResponse;
+import com.hackathon.server.service.GradeService;
 import com.hackathon.server.service.InvestitionService;
+import com.hackathon.server.service.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +34,8 @@ public class InvestitionRestController {
 
     private final InvestitionService investitionService;
     private final InvestitionMapper investitionMapper;
+    private final UsersService usersService;
+    private final GradeService gradeService;
 
     @PostMapping("/investition")
     public ResponseEntity saveInvestition(
@@ -81,6 +87,28 @@ public class InvestitionRestController {
     @GetMapping("investitions/allCategories")
     public ResponseEntity getAllCategories(){
         return new ResponseEntity<>(InvestitionCategory.values(), HttpStatus.OK);
+    }
+
+    @GetMapping("investition/like/{investitionId}/{username}")
+    public ResponseEntity likeInvestition(
+            @PathVariable("username") String username,
+            @PathVariable("investitionId") Integer investitionId
+    ){
+        Investition investition = investitionService.findById(investitionId);
+        Users user = usersService.findByUsername(username);
+
+        Grade grade = Grade.builder().doLike(Boolean.TRUE).build();
+        user.addGrade(grade);
+        investition.addGrade(grade);
+
+        gradeService.save(grade);
+
+        BasicResponse likeResponse = new InvestitionsResponse();
+        likeResponse.setMessage("Like saved!");
+        likeResponse.setStatus(HttpStatus.OK.value());
+        likeResponse.setTimeStamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(likeResponse, HttpStatus.OK);
     }
 
     private InvestitionsResponse getInvestitionsResponse(List<InvestitionDto> investitionDtos) {
