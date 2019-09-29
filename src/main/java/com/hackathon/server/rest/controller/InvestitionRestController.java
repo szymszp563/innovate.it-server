@@ -2,6 +2,7 @@ package com.hackathon.server.rest.controller;
 
 import com.hackathon.server.dto.InvestitionDto;
 import com.hackathon.server.entity.Investition;
+import com.hackathon.server.entity.InvestitionCategory;
 import com.hackathon.server.mappers.InvestitionMapper;
 import com.hackathon.server.rest.exception.InvestitionNotFoundException;
 import com.hackathon.server.rest.exception.UserNotFoundException;
@@ -76,6 +77,11 @@ public class InvestitionRestController {
         InvestitionsResponse investitionResponse = getInvestitionsResponse(investitionDtos);
         return new ResponseEntity<>(investitionResponse, HttpStatus.OK);
 //        return new ResponseEntity<>(investitionService.findInvestitionWithGradeOfUser(username), HttpStatus.OK);
+    }
+
+    @GetMapping("investitions/allCategories")
+    public ResponseEntity getAllCategories(){
+        return new ResponseEntity<>(InvestitionCategory.values(), HttpStatus.OK);
     }
 
     private InvestitionsResponse getInvestitionsResponse(List<InvestitionDto> investitionDtos) {
