@@ -38,7 +38,30 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
 
         int cout = usersRepository.findAll().size();
         if (cout == 0) {
-            loadDara();
+            Authorities auth1 = Authorities.builder().
+                    authoritiesPK(new AuthoritiesPK("user1", "USER")).build();
+            Authorities auth2 = Authorities.builder().
+                    authoritiesPK(new AuthoritiesPK("user2", "USER")).build();
+            Authorities auth3 = Authorities.builder().
+                    authoritiesPK(new AuthoritiesPK("user3", "USER")).build();
+            Authorities auth4 = Authorities.builder().
+                    authoritiesPK(new AuthoritiesPK("user4", "USER")).build();
+
+            Users user1 = Users.builder()
+                    .username(auth1.getAuthoritiesPK().getUsername()).enabled(true).password("{noop}user1")
+                    .authorities(Arrays.asList(auth1)).investition(new LinkedList<>()).grades(new LinkedList<>()).build();
+            Users user2 = Users.builder().
+                    username(auth2.getAuthoritiesPK().getUsername()).enabled(true).password("{noop}user2").
+                    authorities(Arrays.asList(auth2)).investition(new LinkedList<>()).grades(new LinkedList<>()).build();
+            Users user3 = Users.builder().
+                    username(auth3.getAuthoritiesPK().getUsername()).enabled(true).password("{noop}user3").
+                    authorities(Arrays.asList(auth3)).investition(new LinkedList<>()).grades(new LinkedList<>()).build();
+            Users user4 = Users.builder()
+                    .username(auth4.getAuthoritiesPK().getUsername()).enabled(true).password("{noop}user4").
+                            authorities(Arrays.asList(auth4)).investition(new LinkedList<>()).grades(new LinkedList<>()).build();
+
+            usersRepository.saveAll(Arrays.asList(user1, user2, user3, user4));
+//            loadDara();
         }
     }
 
