@@ -76,7 +76,6 @@ public class InvestitionRestController {
 
         InvestitionsResponse investitionResponse = getInvestitionsResponse(investitionDtos);
         return new ResponseEntity<>(investitionResponse, HttpStatus.OK);
-//        return new ResponseEntity<>(investitionService.findInvestitionWithGradeOfUser(username), HttpStatus.OK);
     }
 
     @GetMapping("investitions/allCategories")

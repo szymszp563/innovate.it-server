@@ -24,6 +24,10 @@ public class InvestitionDto {
 
     private List<ImageDto> images;
 
+    private int likes;
+
+    private int dislikes;
+
     private String creator;
 
     private PlaceDto place;

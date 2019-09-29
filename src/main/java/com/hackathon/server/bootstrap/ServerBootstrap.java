@@ -87,19 +87,19 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
         Place place4 = Place.builder().longitude("19.0593588").latitude("50.2540449").name("Katowice").build();
 
         Investition investition1 = Investition.builder().grades(new LinkedList<>()).title("Hotel").category(InvestitionCategory.HOUSING)
-                .creator(user1).description("The biggest hotel in eastern europe").shortDescription("Nice Hotel")
+                .creator(user1).description("The biggest hotel in eastern europe").shortDescription("Nice Hotel").likes(0).dislikes(0)
                 .images(new LinkedList<>()).build();
 
         Investition investition2 = Investition.builder().grades(new LinkedList<>()).title("Aquapark").category(InvestitionCategory.BROTHELS)
-                .creator(user2).description("Super place to go with children").shortDescription("Pleasant place")
+                .creator(user2).description("Super place to go with children").shortDescription("Pleasant place").likes(0).dislikes(0)
                 .images(new LinkedList<>()).build();
 
         Investition investition3 = Investition.builder().grades(new LinkedList<>()).title("Market").category(InvestitionCategory.GASTRONOMY)
-                .creator(user3).description("The best place ever").shortDescription("Low prices")
+                .creator(user3).description("The best place ever").shortDescription("Low prices").likes(0).dislikes(0)
                 .images(new LinkedList<>()).build();
 
         Investition investition4 = Investition.builder().grades(new LinkedList<>()).title("Zoo").category(InvestitionCategory.ENTERTAINMENT)
-                .creator(user4).description("Monkeys gonna still your bananas").shortDescription("Animals everywhere")
+                .creator(user4).description("Monkeys gonna still your bananas").shortDescription("Animals everywhere").likes(0).dislikes(0)
                 .images(new LinkedList<>()).build();
 
         investitionRepository.saveAll(Arrays.asList(investition1, investition2, investition3, investition4));
@@ -127,24 +127,24 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
         usersRepository.saveAll(Arrays.asList(user1, user2, user3));
 
         Grade grade1 = Grade.builder().doLike(true).build();
-        Grade grade2 = Grade.builder().doLike(true).build();
-        Grade grade3 = Grade.builder().doLike(true).build();
+        Grade grade2 = Grade.builder().doLike(false).build();
+        Grade grade3 = Grade.builder().doLike(false).build();
         Grade grade4 = Grade.builder().doLike(true).build();
-        Grade grade5 = Grade.builder().doLike(true).build();
+        Grade grade5 = Grade.builder().doLike(false).build();
         Grade grade6 = Grade.builder().doLike(true).build();
-        Grade grade7 = Grade.builder().doLike(true).build();
-        Grade grade8 = Grade.builder().doLike(true).build();
+        Grade grade7 = Grade.builder().doLike(false).build();
+        Grade grade8 = Grade.builder().doLike(false).build();
         Grade grade9 = Grade.builder().doLike(true).build();
         Grade grade10 = Grade.builder().doLike(true).build();
-        Grade grade11 = Grade.builder().doLike(true).build();
+        Grade grade11 = Grade.builder().doLike(false).build();
         Grade grade12 = Grade.builder().doLike(true).build();
         Grade grade13 = Grade.builder().doLike(true).build();
-        Grade grade14 = Grade.builder().doLike(true).build();
+        Grade grade14 = Grade.builder().doLike(false).build();
         Grade grade15 = Grade.builder().doLike(true).build();
-        Grade grade16 = Grade.builder().doLike(true).build();
+        Grade grade16 = Grade.builder().doLike(false).build();
         Grade grade17 = Grade.builder().doLike(true).build();
-        Grade grade18 = Grade.builder().doLike(true).build();
-        Grade grade19 = Grade.builder().doLike(true).build();
+        Grade grade18 = Grade.builder().doLike(false).build();
+        Grade grade19 = Grade.builder().doLike(false).build();
         Grade grade20 = Grade.builder().doLike(true).build();
 
         investition1.addGrade(grade1);
@@ -202,6 +202,8 @@ public class ServerBootstrap implements ApplicationListener<ContextRefreshedEven
 
         gradeRepository.saveAll(Arrays.asList(grade1, grade2, grade3, grade4, grade5, grade6, grade7, grade8,
                 grade9, grade10, grade11, grade12, grade13, grade14, grade15, grade16, grade17, grade18, grade19, grade20));
+
+        investitionRepository.saveAll(Arrays.asList(investition1, investition2, investition3, investition4));
 
     }
 }

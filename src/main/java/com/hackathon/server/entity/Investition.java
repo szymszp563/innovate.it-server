@@ -54,6 +54,10 @@ public class Investition {
     @OneToMany(mappedBy = "investition", cascade = CascadeType.ALL)
     private List<Grade> grades;
 
+    private int likes = 0;
+
+    private int dislikes = 0;
+
     public void addImage(Image image) {
         this.images.add(image);
         image.setInvestition(this);
@@ -64,9 +68,14 @@ public class Investition {
         place.setInvestition(this);
     }
 
-    public void addGrade(Grade grade){
+    public void addGrade(Grade grade) {
         this.grades.add(grade);
         grade.setInvestition(this);
+        if (grade.isDoLike()) {
+            likes++;
+        } else {
+            dislikes++;
+        }
     }
 
 }
